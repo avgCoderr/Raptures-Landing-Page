@@ -67,7 +67,7 @@ const HomeScreen = () => {
       <Box>
         <Box sx={parentBoxStyle}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={2} alignItems="center">
               {/* Content on the left, 6 columns for large screens */}
               <Grid item xs={12} lg={6}>
                 <Box sx={contentStyle}>
