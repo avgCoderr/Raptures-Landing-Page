@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -7,6 +7,7 @@ import {
   Container,
   Grid,
   useMediaQuery,
+  Tooltip,
 } from "@mui/material";
 import { createTheme, useTheme } from "@mui/material/styles";
 
@@ -62,13 +63,22 @@ const HomeScreen = () => {
     gap: "1rem",
   };
 
+  const [isHovered, setIsHovered] = useState(false); // State to track mouse hover
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Box>
         <Box sx={parentBoxStyle}>
           <Container maxWidth="lg">
             <Grid container spacing={2} alignItems="center">
-              {/* Content on the left, 6 columns for large screens */}
               <Grid item xs={12} lg={6}>
                 <Box sx={contentStyle}>
                   <Typography variant="h1" sx={titleStyle}>
@@ -87,8 +97,12 @@ const HomeScreen = () => {
                       color="primary"
                       startIcon={<NotStartedOutlinedIcon />}
                       sx={{ paddingRight: "3rem", paddingLeft: "3rem" }}
+                      component="a"
+                      href="https://discord.gg/epy5uPXp"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      START
+                      RAPTURES BOT
                     </Button>
                     <Button
                       variant="outlined"
@@ -101,8 +115,17 @@ const HomeScreen = () => {
                   </Box>
                 </Box>
               </Grid>
-                <Grid item xs={12} lg={6}>
-              <Box sx={{display: "flex", alignItems: "center"}}>
+              <Grid item xs={12} lg={6}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    transition: "transform 0.3s ease",
+                    transform: isHovered ? "scale(1.1)" : "scale(1)",
+                  }}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <img
                     src={image}
                     alt="Logo"
@@ -113,9 +136,27 @@ const HomeScreen = () => {
                       marginBottom: "4rem",
                     }}
                   />
-              </Box>
-                </Grid>
+                </Box>
+              </Grid>
             </Grid>
+          </Container>
+        </Box>
+        {/* Footer */}
+        <Box
+          sx={{
+            background:
+              "var(--glass, radial-gradient(151.92% 127.02% at 15.32% 20%, rgba(159, 217, 255, 0.04) 100%, rgba(70, 144, 212, 0.00) 10%))",
+            backdropFilter: "blur(100px)",
+            padding: "1rem",
+            color: "white",
+          }}
+        >
+          <Container maxWidth="lg">
+            <Tooltip title="raptures.company@gmail.com" arrow>
+              <Typography variant="body2" align="center">
+                &copy; 2023 Raptures. Made with love.
+              </Typography>
+            </Tooltip>
           </Container>
         </Box>
       </Box>
