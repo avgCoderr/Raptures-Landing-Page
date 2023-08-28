@@ -101,8 +101,8 @@ const HomeScreen = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Box sx={{alignItems: "center"}}>
                 <Grid item xs={12} lg={6}>
+              <Box sx={{display: "flex", alignItems: "center"}}>
                   <img
                     src={image}
                     alt="Logo"
@@ -113,8 +113,8 @@ const HomeScreen = () => {
                       marginBottom: "4rem",
                     }}
                   />
-                </Grid>
               </Box>
+                </Grid>
             </Grid>
           </Container>
         </Box>
