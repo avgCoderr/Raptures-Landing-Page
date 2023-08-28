@@ -101,18 +101,20 @@ const HomeScreen = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} lg={6}>
-                <img
-                  src={image}
-                  alt="Logo"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    marginTop: "2rem",
-                    marginBottom: "4rem",
-                  }}
-                />
-              </Grid>
+              <Box sx={{alignItems: "center"}}>
+                <Grid item xs={12} lg={6}>
+                  <img
+                    src={image}
+                    alt="Logo"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      marginTop: "2rem",
+                      marginBottom: "4rem",
+                    }}
+                  />
+                </Grid>
+              </Box>
             </Grid>
           </Container>
         </Box>
