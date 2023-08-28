@@ -4,7 +4,7 @@ import { Box, Typography, Button } from "@mui/material";
 import NotStartedOutlinedIcon from "@mui/icons-material/NotStartedOutlined";
 import VideocamIcon from "@mui/icons-material/Videocam";
 
-import image from "../assets/image3.png";
+import image from "../assets/discord-bot.png";
 
 const HomeScreen = () => {
   const parentBoxStyle = {
@@ -47,11 +47,13 @@ const HomeScreen = () => {
       <Box sx={parentBoxStyle}>
         <Box sx={contentStyle}>
           <Typography variant="h1" sx={titleStyle}>
-            RAPTURES BOT !
+            Forget what you knew about Web3 wallets.
           </Typography>
           <Typography variant="body1" sx={descriptionStyle}>
-            The simplest solution for creation and management of new DAOs,
-            coming to your friendly neighborhood as a Discord BOT!
+            Convert your social media accounts into gateways to the Web3 world. 
+          </Typography>
+          <Typography variant="body1" sx={descriptionStyle}>
+            Now available on Discord
           </Typography>
           <Box sx={buttonsContainerStyle}>
             <Button
