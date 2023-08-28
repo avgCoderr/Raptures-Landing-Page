@@ -15,6 +15,7 @@ const HomeScreen = () => {
     height: "100vh",
     margin: "0rem 5rem 0rem 4rem",
     position: "relative",
+    fontFamily: "Manrope, sans-serif"
   };
 
   const contentStyle = {
