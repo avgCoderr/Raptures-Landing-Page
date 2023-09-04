@@ -1,65 +1,79 @@
 import React from "react";
-import { Box, Typography, Card, CardContent } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  createTheme,
+  ThemeProvider,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 
 import walletCreation from "../assets/walletCreation.svg";
 import walletAuth from "../assets/walletAuth.svg";
 
-const cardStyle = {
-  borderRadius: "10px",
-  background:
-    "var(--glass, radial-gradient(151.92% 127.02% at 15.32% 20%, rgba(159, 217, 255, 0.04) 100%, rgba(70, 144, 212, 0.00) 10%))",
-  backdropFilter: "blur(100px)",
-  color: "white",
-  padding: "1rem 4rem 1rem 4rem",
-  margin: "2rem",
-  width: "30%",
-};
-
-const cardContainerStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  textAlign: "center",
-};
-
-const logoStyle = { width: "95%" };
+const theme = createTheme({
+  typography: {
+    fontFamily: "'Manrope', sans-serif",
+  },
+});
 
 const Features = () => {
+  const currentTheme = useTheme();
+  const isMobileView = useMediaQuery(currentTheme.breakpoints.down("sm"));
+
   return (
-    <Box
-      sx={{
-        margin: "3rem 5rem 0rem 5rem",
-      }}
-    >
-      <Box sx={cardContainerStyle}>
-        <Card sx={cardStyle}>
-          <CardContent>
-            <img src={walletCreation} alt="walletCreation" style={logoStyle} />
-            <Typography variant="body2" margin={2}>
-              Content for Card 1 goes here.
-            </Typography>
-          </CardContent>
-        </Card>
-
-        <Card sx={cardStyle}>
-          <CardContent>
-            <img src={walletAuth} alt="walletAuth" style={logoStyle} />
-            <Typography variant="body2" margin={2}>
-              Content for Card 2 goes here.
-            </Typography>
-          </CardContent>
-        </Card>
-
-        <Card sx={cardStyle}>
-          <CardContent>
-            <img src={walletCreation} alt="walletCreation" style={logoStyle} />
-            <Typography variant="body2" margin={2}>
-              Content for Card 3 goes here.
-            </Typography>
-          </CardContent>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ margin: 12, width: isMobileView ? null : "40%" }}>
+        <Card
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(5px)",
+            boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
+            padding: isMobileView ? "0.8rem" : "1rem",
+            borderRadius: "1rem",
+          }}
+        >
+          <Grid container spacing={isMobileView ? 0 : 2}>
+            <Grid item xs={12} md={6}>
+              <img
+                src={walletCreation}
+                alt="Wallet Creation"
+                style={{ width: "100%", opacity: 0.8 }}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <CardContent
+                sx={{
+                  color: "#cecece",
+                  textAlign: isMobileView ? "center" : null,
+                }}
+              >
+                <Typography
+                  variant={isMobileView ? "h6" : "h4"}
+                  component="div"
+                  sx={{ marginBottom: isMobileView ? "0.3rem" : "1rem" }}
+                >
+                  new wallet creation
+                </Typography>
+                <Typography variant={isMobileView ? "body2" : "body1"}>
+                  1. Verify your login on Discord
+                  <br />
+                  2. Use your unique Discord ID
+                  <br />
+                  3. Create a wallet
+                  <br />
+                  4. Integrate the wallet with the Bot
+                  <br />
+                </Typography>
+              </CardContent>
+            </Grid>
+          </Grid>
         </Card>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 

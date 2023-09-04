@@ -14,7 +14,8 @@ import { createTheme, useTheme } from "@mui/material/styles";
 import NotStartedOutlinedIcon from "@mui/icons-material/NotStartedOutlined";
 import VideocamIcon from "@mui/icons-material/Videocam";
 
-import image from "../assets/discord-bot.png";
+import "./Carousel.css";
+import Carousel from "./Carousel";
 
 const theme = createTheme({
   typography: {
@@ -61,16 +62,6 @@ const HomeScreen = () => {
     display: "flex",
     flexDirection: "row",
     gap: "1rem",
-  };
-
-  const [isHovered, setIsHovered] = useState(false); // State to track mouse hover
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
   };
 
   return (
@@ -120,22 +111,9 @@ const HomeScreen = () => {
                   sx={{
                     display: "flex",
                     justifyContent: "center",
-                    transition: "transform 0.3s ease",
-                    transform: isHovered ? "scale(1.1)" : "scale(1)",
                   }}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
                 >
-                  <img
-                    src={image}
-                    alt="Logo"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      marginTop: "2rem",
-                      marginBottom: "4rem",
-                    }}
-                  />
+                  <Carousel />
                 </Box>
               </Grid>
             </Grid>
