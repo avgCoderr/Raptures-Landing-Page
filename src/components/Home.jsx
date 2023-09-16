@@ -70,7 +70,7 @@ const HomeScreen = () => {
         <Box sx={parentBoxStyle}>
           <Container maxWidth="lg">
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={12} lg={6}>
+              <Grid item xs={12} lg={5}>
                 <Box sx={contentStyle}>
                   <Typography variant="h1" sx={titleStyle}>
                     Forget what you knew about Web3 wallets.
@@ -87,7 +87,7 @@ const HomeScreen = () => {
                       variant="contained"
                       color="primary"
                       startIcon={<NotStartedOutlinedIcon />}
-                      sx={{ paddingRight: "3rem", paddingLeft: "3rem" }}
+                      sx={{ paddingRight: "1rem", paddingLeft: "1rem" }}
                       component="a"
                       href="https://discord.gg/epy5uPXp"
                       target="_blank"
@@ -99,14 +99,14 @@ const HomeScreen = () => {
                       variant="outlined"
                       color="primary"
                       startIcon={<VideocamIcon />}
-                      sx={{ paddingRight: "3rem", paddingLeft: "3rem" }}
+                      sx={{ paddingRight: "2rem", paddingLeft: "2rem" }}
                     >
                       DEMO
                     </Button>
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} lg={6}>
+              <Grid item xs={12} lg={7}>
                 <Box
                   sx={{
                     display: "flex",

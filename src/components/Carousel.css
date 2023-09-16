@@ -1,14 +1,14 @@
 /* Carousel.css */
 .carousel-container {
-  perspective: 1000px;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
+  /* perspective: 1000px; */
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 }
 
 .carousel {
   position: relative;
-  transform-style: preserve-3d;
-  animation: rotation 10s infinite linear;
+  /* transform-style: preserve-3d; */
+  /* animation: rotation 10s infinite linear; */
 }
 
 .carousel img {
@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-@keyframes rotation {
+/* @keyframes rotation {
   0% {
     transform: rotateY(0deg) scaleX(1);
   }
@@ -26,4 +26,4 @@
   100% {
     transform: rotateY(360deg) scaleX(1);
   }
-}
+} */
