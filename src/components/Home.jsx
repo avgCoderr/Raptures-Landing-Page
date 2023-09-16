@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Typography,
@@ -14,9 +14,10 @@ import { createTheme, useTheme } from "@mui/material/styles";
 import NotStartedOutlinedIcon from "@mui/icons-material/NotStartedOutlined";
 import VideocamIcon from "@mui/icons-material/Videocam";
 
-import "./Carousel.css";
-import Carousel from "./Carousel";
+import "./HomeImage.css";
 import Loading from "./Loading";
+
+import imgSrc from "../assets/mockups.png";
 
 const theme = createTheme({
   typography: {
@@ -28,8 +29,13 @@ const HomeScreen = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    setTimeout(() => setLoading(false), 2500);
-  }, [loading]);
+    const img = new Image();
+    img.src = imgSrc;
+
+    img.onload = () => {
+      setLoading(false);
+    };
+  }, []);
 
   const parentBoxStyle = {
     marginTop: "2rem",
@@ -123,7 +129,11 @@ const HomeScreen = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <Carousel />
+                    <div>
+                      <div className="imageDiv">
+                        <img src={imgSrc} alt="homeImage" />
+                      </div>
+                    </div>
                   </Box>
                 </Grid>
               </Grid>

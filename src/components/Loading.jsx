@@ -10,12 +10,8 @@ const loadingStyle = {
 };
 
 const Loading = () => {
-  const handleBackdropClick = (event) => {
-    event.stopPropagation();
-  };
-
   return (
-    <Modal open={true} BackdropProps={{ onClick: handleBackdropClick }}>
+    <Modal open={true}>
       <div>
         <Box
           sx={loadingStyle}
