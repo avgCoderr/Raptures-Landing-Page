@@ -16,6 +16,7 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 
 import "./Carousel.css";
 import Carousel from "./Carousel";
+import Loading from "./Loading";
 
 const theme = createTheme({
   typography: {
@@ -24,6 +25,12 @@ const theme = createTheme({
 });
 
 const HomeScreen = () => {
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => setLoading(false), 2500);
+  }, [loading]);
+
   const parentBoxStyle = {
     marginTop: "2rem",
     display: "flex",
@@ -66,78 +73,82 @@ const HomeScreen = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box>
-        <Box sx={parentBoxStyle}>
-          <Container maxWidth="lg">
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs={12} lg={5}>
-                <Box sx={contentStyle}>
-                  <Typography variant="h1" sx={titleStyle}>
-                    Forget what you knew about Web3 wallets.
-                  </Typography>
-                  <Typography variant="body2" sx={descriptionStyle}>
-                    Convert your social media accounts into gateways to the Web3
-                    world.
-                  </Typography>
-                  <Typography variant="body2" sx={descriptionStyle}>
-                    Now available on Discord!
-                  </Typography>
-                  <Box sx={buttonsContainerStyle}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      startIcon={<NotStartedOutlinedIcon />}
-                      sx={{ paddingRight: "1rem", paddingLeft: "1rem" }}
-                      component="a"
-                      href="https://discord.gg/epy5uPXp"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      RAPTURES BOT
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      startIcon={<VideocamIcon />}
-                      sx={{ paddingRight: "2rem", paddingLeft: "2rem" }}
-                    >
-                      DEMO
-                    </Button>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Box>
+          <Box sx={parentBoxStyle}>
+            <Container maxWidth="lg">
+              <Grid container spacing={2} alignItems="center">
+                <Grid item xs={12} lg={5}>
+                  <Box sx={contentStyle}>
+                    <Typography variant="h1" sx={titleStyle}>
+                      Forget what you knew about Web3 wallets.
+                    </Typography>
+                    <Typography variant="body2" sx={descriptionStyle}>
+                      Convert your social media accounts into gateways to the
+                      Web3 world.
+                    </Typography>
+                    <Typography variant="body2" sx={descriptionStyle}>
+                      Now available on Discord!
+                    </Typography>
+                    <Box sx={buttonsContainerStyle}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<NotStartedOutlinedIcon />}
+                        sx={{ paddingRight: "1rem", paddingLeft: "1rem" }}
+                        component="a"
+                        href="https://discord.gg/epy5uPXp"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        RAPTURES BOT
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<VideocamIcon />}
+                        sx={{ paddingRight: "2rem", paddingLeft: "2rem" }}
+                      >
+                        DEMO
+                      </Button>
+                    </Box>
                   </Box>
-                </Box>
+                </Grid>
+                <Grid item xs={12} lg={7}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Carousel />
+                  </Box>
+                </Grid>
               </Grid>
-              <Grid item xs={12} lg={7}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Carousel />
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
+            </Container>
+          </Box>
+          {/* Footer */}
+          <Box
+            sx={{
+              background:
+                "var(--glass, radial-gradient(151.92% 127.02% at 15.32% 20%, rgba(159, 217, 255, 0.04) 100%, rgba(70, 144, 212, 0.00) 10%))",
+              backdropFilter: "blur(100px)",
+              padding: "1rem",
+              color: "white",
+            }}
+          >
+            <Container maxWidth="lg">
+              <Tooltip title="raptures.company@gmail.com" arrow>
+                <Typography variant="body2" align="center">
+                  &copy; 2023 Raptures. Made with love.
+                </Typography>
+              </Tooltip>
+            </Container>
+          </Box>
         </Box>
-        {/* Footer */}
-        <Box
-          sx={{
-            background:
-              "var(--glass, radial-gradient(151.92% 127.02% at 15.32% 20%, rgba(159, 217, 255, 0.04) 100%, rgba(70, 144, 212, 0.00) 10%))",
-            backdropFilter: "blur(100px)",
-            padding: "1rem",
-            color: "white",
-          }}
-        >
-          <Container maxWidth="lg">
-            <Tooltip title="raptures.company@gmail.com" arrow>
-              <Typography variant="body2" align="center">
-                &copy; 2023 Raptures. Made with love.
-              </Typography>
-            </Tooltip>
-          </Container>
-        </Box>
-      </Box>
+      )}
     </ThemeProvider>
   );
 };

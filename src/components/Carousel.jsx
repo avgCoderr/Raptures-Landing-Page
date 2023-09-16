@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./Carousel.css";
-
-// import img1 from "../assets/discord1.svg";
-// import img2 from "../assets/discord2.svg";
 import img3 from "../assets/mockups.png";
 
 const Carousel = () => {
+  const [showImage, setShowImage] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowImage(true);
+    }, 10);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="carousel-container">
       <div className="carousel">
-        <img src={img3} alt="Image 1" />
+        <img src={img3} alt="Image 1" className={showImage ? "show" : ""} />
       </div>
     </div>
   );
