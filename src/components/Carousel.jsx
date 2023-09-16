@@ -8,7 +8,7 @@ const Carousel = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowImage(true);
-    }, 10);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
