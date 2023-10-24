@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 
 import walletCreation from "../assets/walletCreation.svg";
-import walletAuth from "../assets/walletAuth.svg";
 
 const theme = createTheme({
   typography: {

@@ -8,13 +8,16 @@ import {
   Grid,
   useMediaQuery,
   Tooltip,
+  IconButton,
 } from "@mui/material";
 import { createTheme, useTheme } from "@mui/material/styles";
 
 import NotStartedOutlinedIcon from "@mui/icons-material/NotStartedOutlined";
-import VideocamIcon from "@mui/icons-material/Videocam";
+import EmailIcon from "@mui/icons-material/Email";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import TelegramIcon from "@mui/icons-material/Telegram";
 
-import "./HomeImage.css";
+import "./Home.css";
 import Loading from "./Loading";
 
 import imgSrc from "../assets/mockups.png";
@@ -68,13 +71,20 @@ const HomeScreen = () => {
   const descriptionStyle = {
     fontSize: descriptionFontSize,
     fontWeight: 50,
-    marginBottom: "2rem",
+    marginBottom: "0.5rem",
   };
 
   const buttonsContainerStyle = {
     display: "flex",
     flexDirection: "row",
     gap: "1rem",
+  };
+
+  const contactLinksContainerStyle = {
+    display: "flex",
+    flexDirection: "row",
+    gap: "1rem",
+    marginBottom: "1rem",
   };
 
   return (
@@ -95,9 +105,44 @@ const HomeScreen = () => {
                       Convert your social media accounts into gateways to the
                       Web3 world.
                     </Typography>
-                    <Typography variant="body2" sx={descriptionStyle}>
-                      Now available on Discord!
-                    </Typography>
+                    <Box sx={contactLinksContainerStyle}>
+                      <Tooltip title="Twitter" placement="left">
+                        <a
+                          href="https://twitter.com/raptures_tech"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="contactLink"
+                        >
+                          <IconButton color="inherit" sx={{ paddingLeft: 0 }}>
+                            <TwitterIcon />
+                          </IconButton>
+                        </a>
+                      </Tooltip>
+                      <Tooltip title="Email" placement="top">
+                        <a
+                          href="https://mail.google.com/mail/?view=cm&fs=1&to=pratham.oza@raptures.xyz"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="contactLink"
+                        >
+                          <IconButton color="inherit">
+                            <EmailIcon />
+                          </IconButton>
+                        </a>
+                      </Tooltip>
+                      <Tooltip title="Telegram" placement="right">
+                        <a
+                          href="https://web.telegram.org/k/#@maddyinadream"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="contactLink"
+                        >
+                          <IconButton color="inherit">
+                            <TelegramIcon />
+                          </IconButton>
+                        </a>
+                      </Tooltip>
+                    </Box>
                     <Box sx={buttonsContainerStyle}>
                       <Button
                         variant="contained"
@@ -105,19 +150,23 @@ const HomeScreen = () => {
                         startIcon={<NotStartedOutlinedIcon />}
                         sx={{ paddingRight: "1rem", paddingLeft: "1rem" }}
                         component="a"
-                        href="https://discord.gg/epy5uPXp"
+                        href="https://drive.google.com/file/d/1MUHQ7fuVKcQ17GWQjyj2ABoE-wxFWDqP/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        RAPTURES BOT
+                        User Interface
                       </Button>
                       <Button
                         variant="outlined"
                         color="primary"
-                        startIcon={<VideocamIcon />}
-                        sx={{ paddingRight: "2rem", paddingLeft: "2rem" }}
+                        startIcon={<NotStartedOutlinedIcon />}
+                        sx={{ paddingRight: "1rem", paddingLeft: "1rem" }}
+                        component="a"
+                        href="https://drive.google.com/file/d/1-GFiwiokqmwAUp40diJcqrBBaueNhj8Q/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        DEMO
+                        Daap Integration
                       </Button>
                     </Box>
                   </Box>

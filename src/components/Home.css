@@ -8,6 +8,11 @@
   height: 100%;
 }
 
+.contactLink {
+  text-decoration: none;
+  color: inherit;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
