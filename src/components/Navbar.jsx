@@ -76,11 +76,20 @@ const NavBar = () => {
             <List>
               <ListItem>
                 <Link
-                  href="/docs"
+                  href="/team"
                   color="inherit"
                   sx={{ textDecoration: "none" }}
                 >
-                  <ListItemText primary="Docs" />
+                  <ListItemText primary="Team" />
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link
+                  href="/tech"
+                  color="inherit"
+                  sx={{ textDecoration: "none" }}
+                >
+                  <ListItemText primary="Technology" />
                 </Link>
               </ListItem>
               <ListItem>
@@ -90,33 +99,6 @@ const NavBar = () => {
                   sx={{ textDecoration: "none" }}
                 >
                   <ListItemText primary="Features" />
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link
-                  href="/blog"
-                  color="inherit"
-                  sx={{ textDecoration: "none" }}
-                >
-                  <ListItemText primary="Blog" />
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link
-                  href="/pricing"
-                  color="inherit"
-                  sx={{ textDecoration: "none" }}
-                >
-                  <ListItemText primary="Pricing" />
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link
-                  href="/company"
-                  color="inherit"
-                  sx={{ textDecoration: "none" }}
-                >
-                  <ListItemText primary="Company" />
                 </Link>
               </ListItem>
             </List>
@@ -129,20 +111,14 @@ const NavBar = () => {
               flexDirection: "row",
             }}
           >
-            <Link href="/docs" color="inherit" sx={linkStyle}>
-              Docs
+            <Link href="/team" color="inherit" sx={linkStyle}>
+              Team
+            </Link> 
+            <Link href="/tech" color="inherit" sx={linkStyle}>
+              Technology
             </Link>
             <Link href="/features" color="inherit" sx={linkStyle}>
               Features
-            </Link>
-            <Link href="/blog" color="inherit" sx={linkStyle}>
-              Blog
-            </Link>
-            <Link href="/pricing" color="inherit" sx={linkStyle}>
-              Pricing
-            </Link>
-            <Link href="/company" color="inherit" sx={linkStyle}>
-              Company
             </Link>
           </Box>
         </Toolbar>

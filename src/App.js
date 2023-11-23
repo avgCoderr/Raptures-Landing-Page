@@ -9,8 +9,11 @@ import {
 import "./App.css";
 
 import Background from "./components/Background";
+import Technology from "./components/Technology";
+import Features from "./components/Features";
 import NavBar from "./components/Navbar";
 import Home from "./components/Home";
+import Team from "./components/Team";
 
 const App = () => {
   return (
@@ -19,7 +22,9 @@ const App = () => {
       <Background />
       <Routes>
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/features" element={<Features />} /> */}
+        <Route path="/team" element={<Team />} />
+        <Route path="/tech" element={<Technology />} />
+        <Route path="/features" element={<Features />} />
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </Router>

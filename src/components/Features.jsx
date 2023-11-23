@@ -1,79 +1,89 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-  createTheme,
-  ThemeProvider,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { Card, CardContent, Typography, Grid, styled } from "@mui/material";
 
-import walletCreation from "../assets/walletCreation.svg";
+import Icon1 from "@mui/icons-material/AccountBalance";
+import Icon2 from "@mui/icons-material/Psychology";
+import Icon3 from "@mui/icons-material/CurrencyBitcoin";
+import Icon4 from "@mui/icons-material/AssignmentInd";
+import Icon5 from "@mui/icons-material/Security";
 
-const theme = createTheme({
-  typography: {
-    fontFamily: "'Manrope', sans-serif",
+const features = [
+  {
+    icon: <Icon1 />,
+    title: "Completely Self-Custodial",
+  },
+  {
+    icon: <Icon2 />,
+    title: "Intelligent Token Management",
+  },
+  {
+    icon: <Icon3 />,
+    title: "Automatic Chain Handling",
+  },
+  {
+    icon: <Icon4 />,
+    title: "Social Profile Wallet Integration",
+  },
+  {
+    icon: <Icon5 />,
+    title: "Secure Social Login & Key Management",
+  },
+];
+
+const CardContainer = styled(Card)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
+  minHeight: "100px",
+  backgroundColor: "rgba(0, 0, 0, 0.2)",
+  padding: "4rem 0rem 2rem 0rem",
+  transition: "transform 0.3s, box-shadow 0.3s",
+  boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.56)",
+  "&:hover": {
+    transform: "scale(1.1)",
   },
 });
 
-const Features = () => {
-  const currentTheme = useTheme();
-  const isMobileView = useMediaQuery(currentTheme.breakpoints.down("sm"));
+const IconWrapper = styled("div")({
+  fontSize: "large",
+  marginBottom: "2rem",
+  color: "#d8d8d8",
+});
 
+const FeaturesPage = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ margin: 12, width: isMobileView ? null : "40%" }}>
-        <Card
-          sx={{
-            backgroundColor: "rgba(255, 255, 255, 0.08)",
-            backdropFilter: "blur(5px)",
-            boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
-            padding: isMobileView ? "0.8rem" : "1rem",
-            borderRadius: "1rem",
-          }}
-        >
-          <Grid container spacing={isMobileView ? 0 : 2}>
-            <Grid item xs={12} md={6}>
-              <img
-                src={walletCreation}
-                alt="Wallet Creation"
-                style={{ width: "100%", opacity: 0.8 }}
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <CardContent
-                sx={{
-                  color: "#cecece",
-                  textAlign: isMobileView ? "center" : null,
-                }}
-              >
+    <div style={{ marginTop: "8rem" }}>
+      <Grid
+        container
+        spacing={6}
+        justifyContent="center"
+        alignItems="center"
+        paddingRight={10}
+        paddingLeft={10}
+      >
+        {features.map((feature, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index} paddingBottom={2}>
+            <CardContainer>
+              <CardContent>
+                <IconWrapper style={{ transform: "scale(2.5)" }}>
+                  {feature.icon}
+                </IconWrapper>
                 <Typography
-                  variant={isMobileView ? "h6" : "h4"}
+                  variant="h6"
                   component="div"
-                  sx={{ marginBottom: isMobileView ? "0.3rem" : "1rem" }}
+                  color="#e7e7e7"
+                  padding={0}
                 >
-                  new wallet creation
-                </Typography>
-                <Typography variant={isMobileView ? "body2" : "body1"}>
-                  1. Verify your login on Discord
-                  <br />
-                  2. Use your unique Discord ID
-                  <br />
-                  3. Create a wallet
-                  <br />
-                  4. Integrate the wallet with the Bot
-                  <br />
+                  {feature.title}
                 </Typography>
               </CardContent>
-            </Grid>
+            </CardContainer>
           </Grid>
-        </Card>
-      </Box>
-    </ThemeProvider>
+        ))}
+      </Grid>
+    </div>
   );
 };
 
-export default Features;
+export default FeaturesPage;
