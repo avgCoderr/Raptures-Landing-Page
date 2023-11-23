@@ -24,7 +24,29 @@ import upt from "../assets/uptrain.svg";
 import leap from "../assets/leap.svg";
 import map from "../assets/mapleblock.svg";
 
+import Loading from "./Loading";
+
 const Team = () => {
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const img1 = new Image();
+    const img2 = new Image();
+    const img3 = new Image();
+
+    img1.src = rishabhImg;
+    img2.src = madhavImg;
+    img3.src = prathamImg;
+
+    img1.onload = () => {
+      img2.onload = () => {
+        img3.onload = () => {
+          setLoading(false);
+        };
+      };
+    };
+  }, []);
+
   const teamMembers = [
     {
       id: 1,
@@ -149,105 +171,109 @@ const Team = () => {
         height: "100vh",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-          alignContent: "center",
-          height: "100%",
-        }}
-      >
-        {teamMembers.map((member) => (
-          <Card
-            key={member.id}
-            style={{
-              width: "25%",
-              display: "flex",
-              flexDirection: "column",
-              backgroundColor: "rgba(255, 255, 255, 0.53)",
-              boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.73)",
-              position: "relative",
-            }}
-          >
-            <div
+      {loading ? (
+        <Loading />
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            alignContent: "center",
+            height: "100%",
+          }}
+        >
+          {teamMembers.map((member) => (
+            <Card
+              key={member.id}
               style={{
+                width: "25%",
+                display: "flex",
+                flexDirection: "column",
+                backgroundColor: "rgba(255, 255, 255, 0.53)",
+                boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.73)",
                 position: "relative",
               }}
             >
-              <CardMedia
-                component="img"
-                image={member.imageUrl}
-                alt={member.name}
-                style={{
-                  objectFit: "cover",
-                }}
-              />
               <div
                 style={{
-                  position: "absolute",
-                  top: "10%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  display: "flex",
+                  position: "relative",
                 }}
               >
-                <Tooltip title="LinkedIn">
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="contactLink"
-                  >
-                    <LinkedInIcon
-                      style={{
-                        fontSize: 30,
-                        color: "#0077b5",
-                        margin: "0.2rem",
-                      }}
-                    />
-                  </a>
-                </Tooltip>
-                <Tooltip title="Github">
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="contactLink"
-                  >
-                    <GitHubIcon
-                      style={{
-                        fontSize: 30,
-                        color: "#fff",
-                        margin: "0.2rem",
-                      }}
-                    />
-                  </a>
-                </Tooltip>
+                <CardMedia
+                  component="img"
+                  image={member.imageUrl}
+                  alt={member.name}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "10%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    display: "flex",
+                  }}
+                >
+                  <Tooltip title="LinkedIn">
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contactLink"
+                    >
+                      <LinkedInIcon
+                        style={{
+                          fontSize: 30,
+                          color: "#0077b5",
+                          margin: "0.2rem",
+                        }}
+                      />
+                    </a>
+                  </Tooltip>
+                  <Tooltip title="Github">
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contactLink"
+                    >
+                      <GitHubIcon
+                        style={{
+                          fontSize: 30,
+                          color: "#fff",
+                          margin: "0.2rem",
+                        }}
+                      />
+                    </a>
+                  </Tooltip>
+                </div>
               </div>
-            </div>
-            <CardContent
-              style={{
-                display: "flex",
-                textAlign: "center",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography variant="h5" component="div" paddingBottom={1}>
-                {member.name}
-              </Typography>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                {member.icons.map((icon, index) => (
-                  <div style={{ padding: "0.2rem" }} key={index}>
-                    {icon}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+              <CardContent
+                style={{
+                  display: "flex",
+                  textAlign: "center",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Typography variant="h5" component="div" paddingBottom={1}>
+                  {member.name}
+                </Typography>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  {member.icons.map((icon, index) => (
+                    <div style={{ padding: "0.2rem" }} key={index}>
+                      {icon}
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
