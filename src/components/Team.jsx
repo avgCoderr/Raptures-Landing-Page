@@ -30,21 +30,41 @@ const Team = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const img1 = new Image();
-    const img2 = new Image();
-    const img3 = new Image();
+    const loadImages = (imageUrls) => {
+      const promises = imageUrls.map((url) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = url;
+          img.onload = () => resolve(img);
+          img.onerror = (error) => reject(error);
+        });
+      });
 
-    img1.src = rishabhImg;
-    img2.src = madhavImg;
-    img3.src = prathamImg;
-
-    img1.onload = () => {
-      img2.onload = () => {
-        img3.onload = () => {
-          setLoading(false);
-        };
-      };
+      return Promise.all(promises);
     };
+
+    const imageUrls = [
+      rishabhImg,
+      madhavImg,
+      prathamImg,
+      hdfc,
+      tata,
+      dcm,
+      era,
+      searce,
+      upt,
+      sing,
+      leap,
+      map,
+    ];
+
+    loadImages(imageUrls)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error loading images", error);
+      });
   }, []);
 
   const teamMembers = [
