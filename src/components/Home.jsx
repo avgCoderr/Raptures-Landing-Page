@@ -166,7 +166,7 @@ const HomeScreen = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Daap Integration
+                        Dapp Integration
                       </Button>
                     </Box>
                   </Box>
