@@ -199,7 +199,7 @@ const HomeScreen = () => {
             }}
           >
             <Container maxWidth="lg">
-              <Tooltip title="raptures.company@gmail.com" arrow>
+              <Tooltip title="pratham.oza@raptures.xyz" arrow>
                 <Typography variant="body2" align="center">
                   &copy; 2023 Raptures. Made with love.
                 </Typography>
