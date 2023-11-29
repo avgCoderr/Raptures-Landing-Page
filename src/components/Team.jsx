@@ -3,9 +3,12 @@ import {
   Card,
   CardContent,
   CardMedia,
+  useMediaQuery,
   Typography,
   Tooltip,
 } from "@mui/material";
+
+import { createTheme, useTheme } from "@mui/material/styles";
 
 import rishabhImg from "../assets/rishabh.jpg";
 import prathamImg from "../assets/pratham.jpg";
@@ -14,20 +17,25 @@ import madhavImg from "../assets/madhav.jpg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
+import sing from "../assets/singularity.svg";
+import map from "../assets/mapleblock.svg";
+import searce from "../assets/searce.svg";
+import post from "../assets/postman.svg";
+import upt from "../assets/uptrain.svg";
+import sil from "../assets/silver.svg";
 import hdfc from "../assets/hdfc.svg";
 import tata from "../assets/tata.svg";
-import dcm from "../assets/dcm.svg";
-import era from "../assets/erasm.svg";
-import searce from "../assets/searce.svg";
-import sing from "../assets/singularity.svg";
-import upt from "../assets/uptrain.svg";
 import leap from "../assets/leap.svg";
-import map from "../assets/mapleblock.svg";
+import era from "../assets/erasm.svg";
+import dcm from "../assets/dcm.svg";
 
 import Loading from "./Loading";
 
 const Team = () => {
   const [loading, setLoading] = React.useState(true);
+
+  const currentTheme = useTheme();
+  const isTabView = useMediaQuery("(max-width: 1250px)");
 
   React.useEffect(() => {
     const loadImages = (imageUrls) => {
@@ -44,17 +52,19 @@ const Team = () => {
     };
 
     const imageUrls = [
+      prathamImg,
       rishabhImg,
       madhavImg,
-      prathamImg,
+      searce,
       hdfc,
       tata,
+      post,
+      leap,
+      sing,
       dcm,
       era,
-      searce,
+      sil,
       upt,
-      sing,
-      leap,
       map,
     ];
 
@@ -188,7 +198,8 @@ const Team = () => {
   return (
     <div
       style={{
-        height: "100vh",
+        height: isTabView ? "" : "100vh",
+        marginBottom: isTabView ? "4rem" : "",
       }}
     >
       {loading ? (
@@ -201,18 +212,21 @@ const Team = () => {
             justifyContent: "space-around",
             alignContent: "center",
             height: "100%",
+            flexDirection: isTabView ? "column" : "row",
+            marginTop: isTabView ? "6rem" : "",
           }}
         >
           {teamMembers.map((member) => (
             <Card
               key={member.id}
               style={{
-                width: "25%",
+                width: isTabView ? "80%" : "25%",
                 display: "flex",
                 flexDirection: "column",
                 backgroundColor: "rgba(255, 255, 255, 0.53)",
                 boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.73)",
                 position: "relative",
+                marginBottom: isTabView ? "2rem" : "",
               }}
             >
               <div

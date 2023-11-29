@@ -15,7 +15,7 @@ const theme = createTheme({
 
 const Technology = () => {
   const currentTheme = useTheme();
-  const isMobileView = useMediaQuery(currentTheme.breakpoints.down("sm"));
+  const isMobileView = useMediaQuery("(max-width: 900px)");
 
   const [hoveredText, setHoveredText] = useState({
     heading: "Exploring the layers of a device",
@@ -31,11 +31,20 @@ const Technology = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ display: "flex", width: "100%", height: "100vh" }}>
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "100vh",
+          flexDirection: isMobileView ? "column" : "",
+          marginTop: isMobileView ? "2rem" : "",
+        }}
+      >
         <div
           style={{
+            marginTop: isMobileView ? "" : "2rem",
+            marginBottom: "0rem",
             flex: "60%",
-            marginTop: "2rem",
             paddingTop: "2rem",
             position: "relative",
             display: "flex",
@@ -44,7 +53,7 @@ const Technology = () => {
           }}
         >
           <CircleComponent
-            diameter="80vh"
+            diameter={isMobileView ? "40vh" : "80vh"}
             zIndex={1}
             text="Circle 1"
             bgColor="#246683"
@@ -57,7 +66,7 @@ const Technology = () => {
             }
           />
           <CircleComponent
-            diameter="55vh"
+            diameter={isMobileView ? "30vh" : "55vh"}
             zIndex={2}
             text="Circle 2"
             bgColor="#3582a3"
@@ -70,7 +79,7 @@ const Technology = () => {
             }
           />
           <CircleComponent
-            diameter="35vh"
+            diameter={isMobileView ? "20vh" : "35vh"}
             zIndex={2}
             text="Circle 3"
             bgColor="#4998ba"
@@ -83,7 +92,7 @@ const Technology = () => {
             }
           />
           <CircleComponent
-            diameter="15vh"
+            diameter={isMobileView ? "10vh" : "15vh"}
             zIndex={2}
             text="Circle 4"
             bgColor="#74bede"
@@ -96,11 +105,10 @@ const Technology = () => {
             }
           />
         </div>
-
         <div
           style={{
-            marginTop: "2rem",
-            paddingTop: "2rem",
+            marginTop: isMobileView ? "0" : "2rem",
+            paddingTop: isMobileView ? "0" : "2rem",
             padding: "2rem",
             flex: "40%",
             position: "relative",
@@ -124,6 +132,7 @@ const Technology = () => {
                 fontSize: "1.8rem",
                 fontWeight: "bold",
                 marginBottom: "1rem",
+                textAlign: "center",
               }}
             >
               {hoveredText.heading}
